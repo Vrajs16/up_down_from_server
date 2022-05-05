@@ -1,4 +1,4 @@
-from flask import jsonify, make_response, redirect, render_template, request, flash
+from flask import jsonify, make_response, redirect, render_template, request, flash, send_file, send_from_directory
 from werkzeug.utils import secure_filename
 from server import app
 import os
@@ -7,6 +7,7 @@ import os
 @app.route("/", methods=['GET', 'POST'])
 def index():
     if request.method == "POST":
+        print(request.files)
         if 'file' not in request.files:
             print("ERROR: No file part")
             return redirect(request.url)
@@ -27,4 +28,10 @@ def about():
     return "All about Flask"
 
 
-
+@app.route("/download")
+def download():
+    print("HELLO")
+    file = '2-Spotify_v.8.6.22.ipa'
+    resp = make_response(send_from_directory(app.config['UPLOAD_FOLDER'], file, as_attachment=True))
+    resp.headers['filename'] = file
+    return resp
