@@ -26,8 +26,12 @@
       <div class="center-div">
         <button id="download-button" class="button-style">Download</button>
         <br>
+        <button onclick="fileDownload()" class="button-style">Download 2</button>
+        <br>
         <p id="downloading-file">0/0 MB Downloaded</p>
       </div>
+      <a href="/filedownload" download>DOWNLOAD</a>
+      <a href="/filedownload">DOWNLOAD 2</a>
     </section>
   </div>
   <script src="{{url_for('static', filename='js/uploading.js')}}"></script>

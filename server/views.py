@@ -31,7 +31,14 @@ def about():
 @app.route("/download")
 def download():
     print("HELLO")
-    file = '2-Spotify_v.8.6.22.ipa'
+    file = '3-Spotify++_v.8.6.42.ipa'
     resp = make_response(send_from_directory(app.config['UPLOAD_FOLDER'], file, as_attachment=True))
     resp.headers['filename'] = file
     return resp
+
+
+@app.route("/filedownload")
+def download_test():
+    print("HELLO")
+    file = '3-Spotify++_v.8.6.42.ipa'
+    return send_from_directory(app.config['UPLOAD_FOLDER'], file, as_attachment=True)

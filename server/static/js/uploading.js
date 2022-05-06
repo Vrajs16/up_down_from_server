@@ -32,7 +32,7 @@ function uploadFile(name, size, data) {
       // console.log("Download progress", loaded, total);
     });
     request.upload.addEventListener("progress", ({ loaded, total }) => {
-      // console.log(`${name} Upload progress`, loaded, total);
+      console.log(`${name} Upload progress`, loaded, total);
       let fileLoaded = Math.floor((loaded / total) * 100);
       let progressHTML = `<li class="row">
                             <i class="fas fa-file-alt"></i>

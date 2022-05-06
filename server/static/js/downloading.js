@@ -1,12 +1,10 @@
 const downloadButton = document.getElementById("download-button");
 const downloadingFile = document.getElementById("downloading-file");
-console.log(downloadingFile);
 const sleep = (milliseconds) => {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 };
 
 downloadButton.addEventListener("click", (e) => {
-  console.log(e);
   let req = new XMLHttpRequest();
   req.responseType = "blob";
   req.addEventListener("progress", ({ loaded, total }) => {
@@ -20,7 +18,6 @@ downloadButton.addEventListener("click", (e) => {
     let blob = req.response;
     let fileName = req.getResponseHeader("filename");
     var link = document.createElement("a");
-    console.log(link);
     link.href = window.URL.createObjectURL(blob);
     // await sleep(20000);
     link.download = fileName;
@@ -30,3 +27,9 @@ downloadButton.addEventListener("click", (e) => {
   req.open("GET", "/download", true);
   req.send();
 });
+
+function fileDownload() {
+  const a = document.createElement("a");
+  a.href = `/filedownload`;
+  a.click();
+}
